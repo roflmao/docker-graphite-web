@@ -17,14 +17,6 @@ COPY custom_settings.py $SETTINGS_DIR/custom_settings.py
 
 Image's entrypoint always run Django migrations at startup.
 
-## Building with additional requirements ##
-If you want image to contain additional dependencies (e.g. to be able to use
-different database) you should use `--build-arg pip_packages=` and/or
-`--build-arg apt_packages=`, e.g. to addiding postgres dependencies:
-
-```
-```
-
 ## Base compose file to run minimal graphite stack ##
 
 ```yaml
