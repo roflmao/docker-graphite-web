@@ -38,3 +38,48 @@ volumes:
     storage:
         driver: local
 ```
+
+## More complex setup with relay and aggregators daemon and postgres as db ##
+
+```yaml
+version: '2'
+
+services:
+   aggregator:
+      image: mateuszm/carbon-aggregator
+      links:
+        - cache
+      environment:
+        DESTINATIONS: cache:2004
+   cache:
+       image: mateuszm/carbon-cache
+       volumes:
+         - storage:/var/lib/carbon/whisper
+   relay:
+       image: mateuszm/carbon-relay
+       environment:
+         DESTINATIONS: aggregator:2024
+       links:
+         - aggregator
+   web:
+       image: mateuszm/graphite-web:0.9.15-postgres
+       ports:
+          - 80:8000
+       environment:
+          DATABASE_HOST: postgres
+       volumes:
+          - storage:/var/lib/carbon/whisper
+       links:
+          - postgres
+   postgres:
+       image: postgres
+       environment:
+           POSTGRES_USER: graphite
+           POSTGRES_PASSWORD: graphite
+           POSTGRES_DB: graphite
+
+volumes:
+    storage:
+        driver: local
+
+```
