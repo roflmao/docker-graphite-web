@@ -33,6 +33,17 @@ LOGGING = {
     },
 }
 
+DATABASES = {
+    'default': {
+        'NAME': getenv('DATABASE_NAME', 'graphite'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': getenv('DATABASE_USER', 'graphite'),
+        'PASSWORD': getenv('DATABASE_PASSWORD', 'graphite'),
+        'HOST': getenv('DATABASE_HOST', 'localhost'),
+        'PORT': '',
+    },
+}
+
 try:
     from graphite.custom_settings import *
 except ImportError:
