@@ -10,13 +10,13 @@ RUN apt-get update && apt-get install --no-install-recommends -y\
     && env READTHEDOCS=1 pip install\
         Django==1.7\
         django-tagging==0.3.1\
-        python-memcached==1.47\
-        pytz==2016.6.1\
-        graphite-web==0.9.15\
-        whisper==0.9.15\
-        gunicorn==19.6.0\
-        cairocffi==0.7.2\
-        psycopg2==2.6.2\
+        python-memcached==1.58\
+        pytz==2017.2\
+        graphite-web==0.9.16\
+        whisper==0.9.16\
+        gunicorn==19.7.1\
+        cairocffi==0.8.0\
+        psycopg2==2.7.1
     && apt-get purge -y build-essential libffi-dev\
     && apt-get autoremove -y\
     && apt-get clean\
