@@ -1,15 +1,11 @@
-## Graphite local_settings.py
-# Edit this file to customize the default Graphite webapp settings
-#
-# Additional customizations to Django settings can be added to this file as well
+# Graphite local_settings.py
 
 from os import getenv, urandom
 
 SECRET_KEY = getenv('SECRET_KEY', urandom(24).encode('hex'))
 
 STORAGE_DIR = getenv('STORAGE_DIR')
-CONTENT_DIR = getenv('CONTENT_DIR')
-
+STATIC_ROOT = getenv('STATIC_ROOT', getenv('CONTENT_DIR'))
 
 LOG_DIR = getenv('LOG_DIR')
 
