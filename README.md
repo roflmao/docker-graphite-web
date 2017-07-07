@@ -17,6 +17,9 @@ COPY custom_settings.py $SETTINGS_DIR/custom_settings.py
 
 Image's entrypoint always run Django migrations at startup.
 
+Note that you need proper web server (e.g. containerized nginx) to serve
+Graphite's static files (`/var/graphite`).
+
 ## Base compose file to run minimal graphite stack ##
 
 ```yaml
@@ -63,14 +66,19 @@ services:
          - aggregator
    web:
        image: mateuszm/graphite-web:0.9.15-postgres
-       ports:
-          - 80:8000
        environment:
           DATABASE_HOST: postgres
        volumes:
           - storage:/var/lib/carbon/whisper
+          - /var/graphite:/var/graphite
        links:
           - postgres
+   nginx:
+        image: nginx
+        ports:
+          - 80:80
+        volumes:
+          - /var/graphite:/var/graphite
    postgres:
        image: postgres
        environment:

@@ -1,15 +1,12 @@
-## Graphite local_settings.py
-# Edit this file to customize the default Graphite webapp settings
-#
-# Additional customizations to Django settings can be added to this file as well
+# Graphite local_settings.py
 
 from os import getenv, urandom
 
 SECRET_KEY = getenv('SECRET_KEY', urandom(24).encode('hex'))
 
 STORAGE_DIR = getenv('STORAGE_DIR')
-CONTENT_DIR = getenv('CONTENT_DIR')
-
+GRAPHITE_ROOT = '/var/graphite'
+WEBAPP_DIR = '/usr/local/webapp/'
 
 LOG_DIR = getenv('LOG_DIR')
 
@@ -30,6 +27,17 @@ LOGGING = {
             'handlers': ['console'],
             'level': 'INFO',
         },
+    },
+}
+
+DATABASES = {
+    'default': {
+        'NAME': getenv('DATABASE_NAME', 'graphite'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': getenv('DATABASE_USER', 'graphite'),
+        'PASSWORD': getenv('DATABASE_PASSWORD', 'graphite'),
+        'HOST': getenv('DATABASE_HOST', 'localhost'),
+        'PORT': '',
     },
 }
 
