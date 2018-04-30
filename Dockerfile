@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y\
         graphite-web==1.1.3\
         whisper==1.1.3\
         gunicorn\
+        whitenoise\
 #        cairocffi==0.8.0\
         psycopg2-binary\
     && apt-get purge -y build-essential libffi-dev\
