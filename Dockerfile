@@ -13,10 +13,10 @@ RUN apt-get update && apt-get install --no-install-recommends -y\
 #        python-memcached==1.58\
 #        pytz==2017.2\
         graphite-web==1.1.3\
-#        whisper==1.0.2\
+        whisper==1.1.3\
         gunicorn\
 #        cairocffi==0.8.0\
-        psycopg2\
+        psycopg2-binary\
     && apt-get purge -y build-essential libffi-dev\
     && apt-get autoremove -y\
     && apt-get clean\
