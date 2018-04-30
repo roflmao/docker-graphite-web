@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y\
 #        whisper==1.0.2\
         gunicorn\
 #        cairocffi==0.8.0\
-#        psycopg2==2.7.1\
+        psycopg2\
     && apt-get purge -y build-essential libffi-dev\
     && apt-get autoremove -y\
     && apt-get clean\
