@@ -8,15 +8,15 @@ RUN apt-get update && apt-get install --no-install-recommends -y\
         libffi-dev\
         libpq-dev\
     && env READTHEDOCS=1 pip install\
-        Django==1.11.3\
-        scandir==1.5\
-        python-memcached==1.58\
-        pytz==2017.2\
-        graphite-web==1.0.2\
-        whisper==1.0.2\
-        gunicorn==19.7.1\
-        cairocffi==0.8.0\
-        psycopg2==2.7.1\
+#        Django==1.11.3\
+#        scandir==1.5\
+#        python-memcached==1.58\
+#        pytz==2017.2\
+        graphite-web==1.1.3\
+#        whisper==1.0.2\
+        gunicorn\
+#        cairocffi==0.8.0\
+#        psycopg2==2.7.1\
     && apt-get purge -y build-essential libffi-dev\
     && apt-get autoremove -y\
     && apt-get clean\
