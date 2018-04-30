@@ -5,9 +5,9 @@ from os import getenv, urandom
 SECRET_KEY = getenv('SECRET_KEY', urandom(24).encode('hex'))
 
 STORAGE_DIR = getenv('STORAGE_DIR')
-#GRAPHITE_ROOT = '/var/graphite'
-#WEBAPP_DIR = '/usr/local/webapp/'
-
+GRAPHITE_ROOT = '/var/graphite'
+WEBAPP_DIR = '/usr/local/webapp/'
+STATIC_ROOT = '/var/graphite/static'
 LOG_DIR = getenv('LOG_DIR')
 
 LOGGING = {
