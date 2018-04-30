@@ -1,4 +1,4 @@
-FROM python:2.7.12-slim
+FROM python:2.7-slim
 
 MAINTAINER mateuszmoneta@gmail.com
 
