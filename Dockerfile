@@ -31,7 +31,7 @@ ENV SETTINGS_DIR=/usr/local/lib/python2.7/site-packages/graphite\
     GRAPHITE_USER=graphite
 
 COPY graphite.wsgi /wsgi.py
-#COPY local_settings.py $SETTINGS_DIR/local_settings.py
+COPY local_settings.py $SETTINGS_DIR/local_settings.py
 
 RUN mkdir -p $LOG_DIR $STORAGE_DIR $GRAPHITE_ROOT\
     && useradd -m $GRAPHITE_USER\
